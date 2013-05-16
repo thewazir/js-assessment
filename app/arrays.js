@@ -87,11 +87,27 @@ define(function() {
     },
 
     square : function(arr) {
+        var i = 0,
+            sq = 0,
+            length = arr.length;
+        for( ; i<length;i++){
+            sq = arr[i]*arr[i];
+            arr[i] = sq;
+        }
         console.log(arr);
+        return arr;
     },
 
     findAllOccurrences : function(arr, target) {
-
+        var i = 0,
+        length = arr.length,
+        found = [];
+        for( ; i<length;i++){
+            if(arr[i] === target) {
+                found.push(i);
+            }
+        } 
+        return found;
     }
   };
 });
