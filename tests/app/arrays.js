@@ -57,6 +57,20 @@ define([
       expect(result.join(' ')).to.eql('1 2 3');
     });
 
+    it('you should be able to add an item to the beginning of an array', function () {
+      var result = answers.prepend(a, 10);
+
+      expect(result).to.have.length(5);
+      expect(result[0]).to.eql(10);
+    });
+
+    it('you should be able to remove the first item of an array', function () {
+      var result = answers.curtail(a);
+
+      expect(result).to.have.length(3);
+      expect(result.join(' ')).to.eql('2 3 4');
+    });
+
     it('you should be able to join together two arrays', function() {
       var c = [ 'a', 'b', 'c', 1 ],
           result = answers.concat(a, c);
@@ -73,13 +87,13 @@ define([
     });
 
     it('you should be able to count the occurences of an item in an array', function() {
-      var result = answers.count([ 1, 1, 1, 2, 1, 3 ], 1);
+      var result = answers.count([ 1, 2, 4, 4, 3, 4, 3 ], 4);
 
-      expect(result).to.eql(4);
+      expect(result).to.eql(3);
     });
 
     it('you should be able to find duplicates in an array', function() {
-      var result = answers.duplicates([ 1, 2, 4, 4, 3, 3, 1, 5 ]);
+      var result = answers.duplicates([ 1, 2, 4, 4, 3, 3, 1, 5, 3 ]);
 
       expect(result).to.have.length(3);
       expect(result.sort().join(' ')).to.eql('1 3 4');
@@ -95,7 +109,7 @@ define([
     it('you should be able to find all occurrences of an item in an array', function() {
       var result = answers.findAllOccurrences('abcdefabc'.split(''), 'a');
 
-      expect(result.join(' ')).to.eql('0 6');
+      expect(result.sort().join(' ')).to.eql('0 6');
     });
 
   });
